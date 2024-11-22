@@ -70,15 +70,21 @@ void send_data_packet(int16_t x, int16_t y, int16_t z) {
 int main(void) {
     USART2_init(9600);
     int16_t x, y, z;
-    SPI1_Init(SPI_CLK_DIV_16,1,1,8);
-    SPI_ConfigCS(GPIOA, 4);
+
+    //SPI1_Init(SPI_CLK_DIV_16,1,1,8);
+    //SPI_ConfigCS(GPIOA, 4);
+    SPI2_Init(SPI_CLK_DIV_16,1,1,8);
+    SPI_ConfigCS(GPIOB, 12);
     
-    ADXL345_Init(SPI1, GPIOA, 4);
+    //ADXL345_Init(SPI1, GPIOA, 4);
+    ADXL345_Init(SPI2, GPIOB, 12);
 
     if (DEBUG){
-        ADXL345_TestCommunication(SPI1,GPIOA, 4);
-        
-        uint8_t device_id = ADXL345_GetID(SPI1, GPIOA, 4);
+        //ADXL345_TestCommunication(SPI1, GPIOA, 4);
+        ADXL345_TestCommunication(SPI2, GPIOB, 12);
+			
+        //uint8_t device_id = ADXL345_GetID(SPI1, GPIOA, 4);
+        uint8_t device_id = ADXL345_GetID(SPI2, GPIOB, 12);
         
         if (device_id == 0xE5) {
             USART2_SendString("Device ID: 0xE5\n");            
@@ -87,16 +93,20 @@ int main(void) {
             USART2_SendHexString(device_id);
             USART2_SendString("\n");
         }
-        ADXL345_Data data = ADXL345_ReadAllRegisters(SPI1, GPIOA, 4);
+        //ADXL345_Data data = ADXL345_ReadAllRegisters(SPI1, GPIOA, 4);
+        ADXL345_Data data = ADXL345_ReadAllRegisters(SPI2, GPIOB, 12);
+
         ADXL345_SendDataUSART(data);
     }
     
     while (1) {
-        ADXL345_ReadAcceleration(SPI1, GPIOA, 4, &x, &y, &z);
+        //ADXL345_ReadAcceleration(SPI1, GPIOA, 4, &x, &y, &z);
+        ADXL345_ReadAcceleration(SPI2, GPIOB, 12, &x, &y, &z);
+        
         send_data_packet(x, y, z);
         if (DEBUG)
             while(1);
-        delay_ms(1000);
+        delay_s(1);
     }
 }
 

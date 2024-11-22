@@ -7,10 +7,10 @@ Tous les projets de ce référentiel utilisent le dossier libs comme source de c
 ## Structure du projet
 ```
 └── 📁SPI_ADXL345
-    └── adxl345.h
-    └── general.h
-    └── spi.h
-    └── uart.h
+    └── adxl345.h et adxl345.c
+    └── general.h et general.c
+    └── spi.h et spi.c
+    └── uart.h et uart.c
     └── main.c
     └── process.pde
     
