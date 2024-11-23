@@ -6,7 +6,8 @@ Ce dépôt est destiné à stocker et documenter de petits projets utilisant la 
 
 La Nucleo 103RB est une carte de développement équipée du microcontrôleur STM32F103RB de STMicroelectronics. Elle est idéale pour les projets d'apprentissage et de prototypage rapide grâce à ses nombreuses fonctionnalités et sa compatibilité avec l'environnement de développement Keil5.
 
-![Nucleo 103RB](https://www.st.com/bin/ecommerce/api/image.PF260002.en.feature-description-include-personalized-no-cpn-medium.jpg)
+![Nucleo 103RB](https://raw.githubusercontent.com/dan-lara/STM32F103-Codes/ee0fa082dc9753bb5c051dcde199c1f8b94d5650/F103RB/nucleo.png
+)
 
 ## Projets
 
